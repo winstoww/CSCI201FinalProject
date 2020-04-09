@@ -1,4 +1,4 @@
-
+//class used to store the coordinates
 public class Location {
 	private Double latitude;
 	private Double longitude;
