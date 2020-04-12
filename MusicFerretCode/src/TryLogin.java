@@ -18,7 +18,7 @@ public class UserLogin {
         Profile user = null;
  
         if (result.next()) {
-            Profile = new Profile(result.getString("name"), password, email, ***Location Location***, ***ArrayList<String> instruments***, //not sure how to store this info in database yet
+            user = new Profile(result.getString("name"), password, email, ***Location Location***, ***ArrayList<String> instruments***, //not sure how to store this info in database yet
 			                            ***ArrayList<Integer> genres***, ***ArrayList<Integer> skill***, ***boolean isPermanent***); 
         }
  
