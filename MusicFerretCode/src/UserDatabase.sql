@@ -11,4 +11,4 @@ CREATE TABLE User (
 );
 
 INSERT INTO User (name, email, password)
-	VALUES	('Yong', 'yongeshi@usc.edu', 'mypass');
+	VALUES	('Jane Doe', 'Jane@usc.edu', 'mypass');
