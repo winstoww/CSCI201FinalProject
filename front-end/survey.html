@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<title>Survey Page</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+		* {
+			color: #b7472a;
+			font-family: 'Sen', sans-serif;
+		}
+		body {
+			background-image: url("back.jpg");
+			background-size: cover;
+			background-color: #5f6caf;
+		}
+		h1 {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#container {
+			background-color: #edf7fa;
+			opacity: 1;
+			margin-top: 100px;
+			margin-bottom: 100px;
+			padding: 20px;
+			width: 800px;
+		}
+		#map {
+			width: 400px;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" class="container text-center">
+		<h1>Preference Survey</h1>
+		<form id="form">
+			<div class="row">
+				<label for="name" class="col-3 m-3">Your name:</label>
+				<input type="text" class="col-5 m-3" id="name" placeholder="Enter your name">
+			</div>
+			<div class="row">
+				<label for="style" class="col-3 m-3">Your music style:</label>
+				<select class="form-control col-5 m-3" id="style"> 
+					<option value="">----Select One---</option>
+					<option value="pop">Pop</option>
+					<option value="rock">Rock</option>
+					<option value="jazz">Jazz</option>
+					<option value="country">Country</option>
+					<option value="folk">Folk</option>
+					<option value="blues">Blues</option>
+					<option value="hiphop">Hip Hop</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="instrument" class="col-3 m-3">Instrument you play:</label>
+				<select class="form-control col-5 m-3" id="instrument"> 
+					<option value="">----Select One---</option>
+					<option value="guitar">Guitar</option>
+					<option value="bass">Bass</option>
+					<option value="drum">Drum</option>
+					<option value="piano">Piano</option>
+					<option value="violin">Violin</option>
+					<option value="saxophone">Saxophone</option>
+					<option value="trumpet">Trumpet</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="map" class="col-3 m-3">Select your physical location from map:</label>
+				<img id="map" src="map.png" alt="map">
+			</div>
+			<div class="row justify-content-center">
+				<a type="button" class="btn btn-info col-3 m-3" href="dashboard.html">Submit</a>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
