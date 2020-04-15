@@ -1,6 +1,6 @@
 import java.sql.*;
  
-public class DeleteUser {
+public class DBDeleteUser {
  
     public void removeUser(String email) throws SQLException, ClassNotFoundException { //delete user from database                                                                                              
         String dbURL = "jdbc:mysql://localhost:3306/My201SQL"; //"My201SQL"-> the name of your SQL connection in MySQL Workbench
