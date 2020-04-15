@@ -1,6 +1,6 @@
 import java.sql.*;
  
-public class UserLogin {
+public class DBUserLogin {
  
     public Profile tryLogin(String email, String password) throws SQLException, ClassNotFoundException {
         String dbURL = "jdbc:mysql://localhost:3306/My201SQL"; //"My201SQL"-> the name of your SQL connection in MySQL Workbench
