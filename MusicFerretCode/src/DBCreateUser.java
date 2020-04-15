@@ -1,6 +1,6 @@
 import java.sql.*;
  
-public class CreateUser {
+public class DBCreateUser {
  
     public Profile createNewUser(String email, String password, String name, ***) throws SQLException, ClassNotFoundException { //create new user and return user profile
                                                                                                                                 //add more into constructor like location, isPermanent, instruments, etc
