@@ -5,8 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
  
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/UserLoginServlet")
+public class UserLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
