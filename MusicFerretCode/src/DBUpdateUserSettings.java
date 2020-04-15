@@ -1,6 +1,6 @@
 import java.sql.*;
  
-public class UpdateUserSettings {
+public class DBUpdateUserSettings {
  
     public Profile updateName(String email, String password, String newName) throws SQLException, ClassNotFoundException { //update name and return updated user profile
         String dbURL = "jdbc:mysql://localhost:3306/My201SQL"; //"My201SQL"-> the name of your SQL connection in MySQL Workbench
