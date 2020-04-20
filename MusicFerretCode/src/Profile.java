@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.concurrent.ForkJoinPool;
 
 public class Profile {
 	private String name;
@@ -36,9 +37,20 @@ public class Profile {
 		for(int i=0; i<profiles.size(); i++)// each loop generates the score for one pair of profiles
 		{
 
-			Double loc_score= location_score(this, profiles.get(i));//getting location score
-			Double genre_score= genre_score(this, profiles.get(i));//getting genre score
-			Double skill_score= skill_score(this, profiles.get(i));//getting skill level score
+//			Double loc_score= location_score(this, profiles.get(i));//getting location score
+//			Double genre_score= genre_score(this, profiles.get(i));//getting genre score
+//			Double skill_score= skill_score(this, profiles.get(i));//getting skill level score
+			ForkJoinPool pool = new ForkJoinPool();
+			LocationParrallel loc= new LocationParrallel(this,profiles.get(i));
+			GenreParrallel genre= new GenreParrallel(this,profiles.get(i));
+			SkillParallel skill= new SkillParallel(this,profiles.get(i));
+		
+			pool.execute(loc);
+			pool.execute(genre);
+			pool.execute(skill);
+			Double loc_score= loc.join();
+			Double genre_score= genre.join();
+			Double skill_score=skill.join();
 			if(skill_score!=-1)
 			{
 				results.set(i, loc_score+ genre_score+ skill_score);//setting the score in the results array for normal case
