@@ -3,15 +3,15 @@ import java.util.ArrayList;
 import java.util.concurrent.ForkJoinPool;
 
 public class Profile {
-	private String name;
-	private String password;
-	private String email;
-	private Location Location;//stores coordinates
-	private ArrayList<String> instruments;//stores the name of the instruments
-	private ArrayList<Integer> genres;//stores the integer representing the amount of interest the user 
+	protected String name;
+	protected String password;
+	protected String email;
+	protected Location Location;//stores coordinates
+	protected ArrayList<String> instruments;//stores the name of the instruments
+	protected ArrayList<Integer> genres;//stores the integer representing the amount of interest the user 
 	//has on the list of genres we provide to them
-	private ArrayList<Integer> skill;// stores the integer representing the skill level associated with each instrument
-	private boolean isPermanent;//tells us if the account is permanent or temporary
+	protected ArrayList<Integer> skill;// stores the integer representing the skill level associated with each instrument
+	protected boolean isPermanent;//tells us if the account is permanent or temporary
 	
 	public Profile(String name,String password, String email, Location Location,ArrayList<String> instruments,
 			ArrayList<Integer> genres,ArrayList<Integer> skill, boolean isPermanent)
