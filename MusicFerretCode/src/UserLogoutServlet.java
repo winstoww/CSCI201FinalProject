@@ -7,12 +7,12 @@ import javax.servlet.http.*;
 public class UserLogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.removeAttribute("user");
              
-            RequestDispatcher dispatch = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatch = request.getRequestDispatcher("login.html"); //change to homepage - dashboard.html?
             dispatch.forward(request, response);
         }
     }
