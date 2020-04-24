@@ -6,6 +6,7 @@ public class Profile {
 	protected String name;
 	protected String password;
 	protected String email;
+	protected int profileID;
 	protected Location Location;//stores coordinates
 	protected ArrayList<String> instruments;//stores the name of the instruments
 	protected ArrayList<Integer> genres;//stores the integer representing the amount of interest the user 
@@ -13,9 +14,10 @@ public class Profile {
 	protected ArrayList<Integer> skill;// stores the integer representing the skill level associated with each instrument
 	protected boolean isPermanent;//tells us if the account is permanent or temporary
 	
-	public Profile(String name,String password, String email, Location Location,ArrayList<String> instruments,
+	public Profile(int profileID, String name,String password, String email, Location Location,ArrayList<String> instruments,
 			ArrayList<Integer> genres,ArrayList<Integer> skill, boolean isPermanent)
 	{
+		this.profileID = profileID;
 		this.name=name;
 		this.password=password;
 		this.email= email;
