@@ -2,19 +2,22 @@ import java.sql.*;
  
 public class DBCreateUser {
  
-    public Profile createNewUser(String email, String password, String name, ***) throws SQLException, ClassNotFoundException { //create new user and return user profile
+    public Profile createNewUser(String email, String password, String name, double latitude, double longitude) throws SQLException, ClassNotFoundException { //create new user and return user profile
                                                                                                                                 //add more into constructor like location, isPermanent, instruments, etc
-        String dbURL = "jdbc:mysql://localhost:3306/My201SQL"; //"My201SQL"-> the name of your SQL connection in MySQL Workbench
+        String dbURL = "jdbc:mysql://localhost/UserDatabase"; 
         String dbUser = "root";
         String dbPassword = "password"; //"password"-> your saved password
- 
-        Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-        String sql = "INSERT INTO User (email, password, name, ***) VALUES (?, ?, ?, ***)";
-        PreparedStatement statement = connection.prepareStatement(sql);
+        Connection connection = null;
+ 	      PreparedStatement statement = null;
+     
+        connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+        String sql = "INSERT INTO User (name, password, email, latitude, longitude) VALUES (?, ?, ?, ?, ?)";
+        statement = connection.prepareStatement(sql);
         statement.setString(1, email);
         statement.setString(2, password);
         statement.setString(3, name);
-        statement.setString(4, ***);
+        statement.setString(4, latitude);
+        statement.setString(4, longitude);
           
         int rowsInserted = statement.executeUpdate(); 
         
@@ -22,19 +25,43 @@ public class DBCreateUser {
         
         if (rowsInserted > 0) { //new user was created
             String sql = "SELECT * FROM User WHERE email = ? and password = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
-            statement.setString(2, password);
+            PreparedStatement statement2 = null;
+            ResultSet result2 = null;
+         
+            statement2 = connection.prepareStatement(sql);
+            statement2.setString(1, email);
+            statement2.setString(2, password);
 
-            ResultSet result = statement.executeQuery();
+            result2 = statement2.executeQuery();
             
-            if (result.next()) {
-                user = new Profile(result.getString("name"), result.getString("password"), result.getString("email"), ***Location Location***, ***ArrayList<String> instruments***, //not sure how to store this info in database yet
-                                      ***ArrayList<Integer> genres***, ***ArrayList<Integer> skill***, ***boolean isPermanent***); 
+            if (result2.next()) {
+                Location location = new Location(latitude, longitude);
+                user = new Profile(result.getString("profileID"), result.getString("name"), result.getString("password"), result.getString("email"), location, null, //null or empty arraylist
+                                      null, null, true); 
+            }
+             
+            try {
+                if (result2 != null) {
+                   result2.close();
+                }
+                if (statement2 != null) {
+                   statement2.close();
+                }
+            } catch (SQLException sqle) {
+                System.out.println(sqle.getMessage());
             }
         }
  
-        connection.close();
+        try {
+            if (statement != null) {
+               statement.close();
+            }
+            if (connection != null) {
+               connection.close();
+            }
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
  
         return user; //if user returns null then couldn't find in database -> incorrect email/password
     }
