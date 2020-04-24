@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS UserDatabase;
 CREATE DATABASE UserDatabase;
 
-USE UserInfo;
+USE UserDatabase;
 
 CREATE TABLE Profile (
     profileID INT(11) PRIMARY KEY AUTO_INCREMENT,
