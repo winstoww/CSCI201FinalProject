@@ -3,13 +3,15 @@ import java.sql.*;
 public class DBDeleteUser {
  
     public void removeUser(String email) throws SQLException, ClassNotFoundException { //delete user from database                                                                                              
-        String dbURL = "jdbc:mysql://localhost:3306/My201SQL"; //"My201SQL"-> the name of your SQL connection in MySQL Workbench
+        String dbURL = "jdbc:mysql://localhost/UserDatabase"; 
         String dbUser = "root";
         String dbPassword = "password"; //"password"-> your saved password
+        Connection connection = null;
+ 	      PreparedStatement statement = null;
  
-        Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+        connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
         String sql = "DELETE FROM User WHERE email=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
+        statement = connection.prepareStatement(sql);
         statement.setString(1, email);
           
         int rowsDeleted = statement.executeUpdate(); 
@@ -17,6 +19,15 @@ public class DBDeleteUser {
         if (rowsDeleted  > 0) { //user was deleted
         }
  
-        connection.close();
+        try {
+            if (statement != null) {
+               statement.close();
+            }
+            if (connection != null) {
+               connection.close();
+            }
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
      }
 }
