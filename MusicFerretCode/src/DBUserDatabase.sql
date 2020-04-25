@@ -28,7 +28,6 @@ CREATE TABLE Skills(
 CREATE TABLE Genres(
 	genreID INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     profileID INT(11) NOT NULL,
-    genreName VARCHAR(45) NOT NULL,
     genreRating INT(2) NOT NULL,
 	FOREIGN KEY (profileID) REFERENCES Profile(profileID)
 );
