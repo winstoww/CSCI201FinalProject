@@ -31,21 +31,20 @@ CREATE TABLE Genres(
 INSERT INTO Profile (name, password, email,latitude,longitude)
 	VALUES ("Arjun Mitra", "trojan", "mitraarj@usc.edu", "34.0224", "-118.2851");
 
-INSERT INTO Instruments(profileID, instrument)
-	VALUES (1, "guitar"),
-    (1, "piano");
+INSERT INTO Instruments(profileID, instrument ,skill)
+	VALUES (1, "guitar",8),
+    (1, "piano",2);
 
-INSERT INTO Skills(instrumentID, skill)
-	VALUES (1, 8),
-	(2, 2);
+-- INSERT INTO Skills(instrumentID, skill)
+-- 	VALUES (1, 8),
+-- 	(2, 2);
     
-INSERT INTO Genres(profileID, genreName , genreRating )
-	VALUES (1,"POP", 2 ),
-	(1, "Rock", 5),
-    (1, "Jazz" , 8),
-    (1, "Country" , 8 ),
-    (1, "Folk" , 9),
-    (1, "Blues", 8),
-    (1, "Hip Hop" ,3 ),
-    (1, "Other" ,  5);
-    
+INSERT INTO Genres(profileID , genreRating )
+	VALUES (1, 2 ),
+	(1, 5),
+    (1 , 8),
+    (1 , 8 ),
+    (1 , 9),
+    (1, 8),
+    (1 ,3 ),
+    (1,  5);
