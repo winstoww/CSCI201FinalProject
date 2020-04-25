@@ -42,10 +42,9 @@ public class DBUserLogin {
             statement3.setInt(1, result.getInt("profileID"));
             result3 = statement3.executeQuery();
 		
-	    ArrayList<Integer> genres = new ArrayList<Integer>(); //Dont think this array in profile is suitable with the information in database - change Integer to pair?
+	    ArrayList<Integer> genres = new ArrayList<Integer>();
   	    while (result3.next()) {
 		genres.add(result3.getInt("genreRating"));
-		//genres.add(<pair?>result3.getString("genreName"), result3.getInt("genreRating"));
 	    }
 		
 	    PreparedStatement statement4 = null;
