@@ -16,13 +16,8 @@ CREATE TABLE Instruments(
 	instrumentID INT(11) PRIMARY KEY AUTO_INCREMENT,
     profileID INT(11) NOT NULL,
     instrument VARCHAR(45) NOT NULL,
-    FOREIGN KEY (profileID) REFERENCES Profile(profileID)
-);
-
-CREATE TABLE Skills(
-    instrumentID INT(11) NOT NULL,
     skill INT(2) NOT NULL,
-	FOREIGN KEY (instrumentID) REFERENCES Instruments(instrumentID)
+    FOREIGN KEY (profileID) REFERENCES Profile(profileID)
 );
 
 CREATE TABLE Genres(
