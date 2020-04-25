@@ -31,8 +31,10 @@ public class DBUserLogin {
             result2 = statement2.executeQuery();
 		
 	    ArrayList<String> instruments = new ArrayList<String>();
+  	    ArrayList<Integer> skill = new ArrayList<Integer>();
   	    while (result2.next()) {
 		instruments.add(result2.getString("instrument"));
+		skill.add(result2.getString("skill"));
 	    }
 	    
 	    PreparedStatement statement3 = null;
@@ -47,31 +49,10 @@ public class DBUserLogin {
 		genres.add(result3.getInt("genreRating"));
 	    }
 		
-	    PreparedStatement statement4 = null;
-	    ResultSet result4 = null;
-	    String sql4 = "SELECT * FROM Skills WHERE profileID = ?"; //instrumentID not profileID - not sure how to store this in arraylist<integer>
-      	    statement4 = connection.prepareStatement(sql4);
-            statement4.setInt(1, result.getInt("profileID"));
-            result4 = statement4.executeQuery();
-		
-	    ArrayList<Integer> skill = new ArrayList<Integer>(); //integer?
-  	    while (result4.next()) {
-		//skill.add(result4.getInt("skill"));
-	    }
-		
             user = new Profile(result.getInt("profileID"), result.getString("name"), result.getString("password"), result.getString("email"), location, instruments,
 	    	                            genres, skill, true); 
             
-	    try {
-    	        if (result4 != null) {
-    		    result4.close();
-    	        }
-    	        if (statement4 != null) {
-    		    statement4.close();
-    	        }
-    	    } catch (SQLException sqle) {
-    	        System.out.println(sqle.getMessage());
-    	    }
+	    
 	    try {
     	        if (result3 != null) {
     		    result3.close();
