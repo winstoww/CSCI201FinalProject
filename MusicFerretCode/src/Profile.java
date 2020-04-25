@@ -28,7 +28,7 @@ public class Profile {
 		this.isPermanent=isPermanent;
 	}
 	
-	public ArrayList<Double> matchmake(ArrayList<Profile> profiles)
+	public ArrayList<Profile> matchmake(ArrayList<Profile> profiles)
 	{
 		ArrayList<Double> results =new ArrayList<Double>(); // stores the compatability score for each profile that this user can match up with
 		for(int i=0; i<profiles.size(); i++)
@@ -67,7 +67,46 @@ public class Profile {
 		{
 			return null;// if their exists only one other profile and they play only on instrument (the same one as you), then the profile doesnt gets matched
 		}
-		return results;//otherwise return matches
+		ArrayList<Profile> matches =new ArrayList<Profile>();
+		ArrayList<Integer> indexes= new ArrayList<Integer>();
+		
+		
+		for(int i=0; i<4; i++)
+		{
+			if(i>= results.size())
+			{
+				break;
+			}
+			Double max= new Double(Double.MIN_VALUE);
+			Integer index = -1;
+			for(int j=0; j<profiles.size(); j++)
+			{
+				if(matches.contains(profiles.get(j)) == false)
+				{
+					if(results.get(j) <0)
+					{
+						continue;
+					}
+					if(results.get(j) > max )
+					{
+						index=j;
+						max= results.get(j);
+					}
+				}
+			}
+			if(index ==-1)
+			{
+				break;
+			}
+			matches.add(profiles.get(index));
+		}
+		
+		if(matches.size()==0)
+		{
+			return null;
+		}
+		return matches;
+		//return results;//otherwise return matches
 	}
 	
 	private Double location_score(Profile curr, Profile other)
@@ -260,4 +299,3 @@ public class Profile {
 		output+="\n";
 		return output;
 	}
-}

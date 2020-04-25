@@ -21,15 +21,16 @@ public class MatchmakingTest {
 		{
 			genres.add(new Integer(i+1));
 		}
-		Profile usc= new Profile("usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
-		Profile ucla= new Profile("ucla", "bruin", "@ucla.edu", new Location(34.0689,118.4452), instruments2, genres, skill, true );
-		Profile berkeley= new Profile("berkeley", "bears", "@berkeley.edu", new Location(37.8715,122.2730), instruments2, genres, skill, true );
+		Profile usc= new Profile(1,"usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
+		Profile ucla= new Profile(2,"ucla", "bruin", "@ucla.edu", new Location(34.0689,118.4452), instruments2, genres, skill, true );
+		Profile berkeley= new Profile(3,"berkeley", "bears", "@berkeley.edu", new Location(37.8715,122.2730), instruments2, genres, skill, true );
 		ArrayList<Profile> matches= new ArrayList<Profile>();
 		matches.add(ucla);
 		matches.add(berkeley);
-		ArrayList<Double> scores= usc.matchmake(matches);
-		System.out.println("ucla score= " + scores.get(0));
-		System.out.println("berkeley score= " + scores.get(1));
+		ArrayList<Profile> scores= usc.matchmake(matches);
+		System.out.println(scores);
+//		System.out.println("ucla score= " + scores.get(0));
+//		System.out.println("berkeley score= " + scores.get(1));
 		return;
 	}
 	
@@ -48,15 +49,17 @@ public class MatchmakingTest {
 			genres.add(new Integer(i+1));
 			genres2.add(new Integer(11 - (i+1)) );
 		}
-		Profile target= new Profile("usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
-		Profile better= new Profile("ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
-		Profile worse= new Profile("berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments2, genres2, skill, true );
+		Profile target= new Profile(1,"usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
+		Profile better= new Profile(2,"ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
+		Profile worse= new Profile(3,"berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments2, genres2, skill, true );
 		ArrayList<Profile> matches= new ArrayList<Profile>();
 		matches.add(better);
 		matches.add(worse);
-		ArrayList<Double> scores=target.matchmake(matches);
-		System.out.println("better score= " + scores.get(0));
-		System.out.println("worse score= " + scores.get(1));
+		
+		ArrayList<Profile> scores=target.matchmake(matches);
+		System.out.println(scores);
+//		System.out.println("better score= " + scores.get(0));
+//		System.out.println("worse score= " + scores.get(1));
 		return;
 	}
 	
@@ -77,15 +80,17 @@ public class MatchmakingTest {
 		{
 			genres.add(new Integer(i+1));
 		}
-		Profile target= new Profile("usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
-		Profile better= new Profile("ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
-		Profile worse= new Profile("berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments3, genres, skill2, true );
+		Profile target= new Profile(1,"usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
+		Profile better= new Profile(2,"ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
+		Profile worse= new Profile(3,"berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments3, genres, skill2, true );
 		ArrayList<Profile> matches= new ArrayList<Profile>();
 		matches.add(better);
 		matches.add(worse);
-		ArrayList<Double> scores=target.matchmake(matches);
-		System.out.println("better score= " + scores.get(0));
-		System.out.println("worse score= " + scores.get(1));
+	
+		ArrayList<Profile> scores=target.matchmake(matches);
+		System.out.println(scores);
+//		System.out.println("better score= " + scores.get(0));
+//		System.out.println("worse score= " + scores.get(1));
 		return;
 	}
 	
@@ -106,15 +111,16 @@ public class MatchmakingTest {
 		{
 			genres.add(new Integer(i+1));
 		}
-		Profile target= new Profile("usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill2, true );
-		Profile better= new Profile("ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill2, true );
-		Profile worse= new Profile("berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments3, genres, skill, true );
+		Profile target= new Profile(1,"usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill2, true );
+		Profile better= new Profile(2,"ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill2, true );
+		Profile worse= new Profile(3,"berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments3, genres, skill, true );
 		ArrayList<Profile> matches= new ArrayList<Profile>();
 		matches.add(better);
 		matches.add(worse);
-		ArrayList<Double> scores=target.matchmake(matches);
-		System.out.println("better score= " + scores.get(0));
-		System.out.println("worse score= " + scores.get(1));
+		ArrayList<Profile> scores=target.matchmake(matches);
+		System.out.println(scores);
+//		System.out.println("better score= " + scores.get(0));
+//		System.out.println("worse score= " + scores.get(1));
 		return;
 	}
 	
@@ -133,17 +139,17 @@ public class MatchmakingTest {
 		{
 			genres.add(new Integer(i+1));
 		}
-		Profile target= new Profile("usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
-		Profile better= new Profile("ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
-		Profile worse= new Profile("berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
+		Profile target= new Profile(1,"usc", "trojan", "@usc.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
+		Profile better= new Profile(2,"ucla", "bruin", "@ucla.edu", new Location(34.0224,118.2851), instruments2, genres, skill, true );
+		Profile worse= new Profile(3,"berkeley", "bears", "@berkeley.edu", new Location(34.0224,118.2851), instruments, genres, skill, true );
 		ArrayList<Profile> matches= new ArrayList<Profile>();
 		matches.add(better);
 		matches.add(worse);
-		ArrayList<Double> scores=target.matchmake(matches);
-		System.out.println("better score= " + scores.get(0));
-		System.out.println("worse score= " + scores.get(1));
+		ArrayList<Profile> scores=target.matchmake(matches);
+		System.out.println(scores);
+//		System.out.println("better score= " + scores.get(0));
+//		System.out.println("worse score= " + scores.get(1));
 		return;
 	}
 	
 
-}
