@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>Chat Client</title>
+		<script src="chatFunctions.js"></script>
+	
+	</head>
+	<body>
+		<div id = "nameformarea">
+			<form name="nameform" onsubmit="return setUsernameRecipient();">
+				<input type = "text" name = "username" placeholder="Username"/>
+				<input type = "text" name = "recipient" placeholder="Recipient"/>
+				<input type = "submit" name = "submitname" value = "Submit Username"/>
+			</form>
+		</div>
+		<div id = "chatformarea" style = "display: none">
+			<form name = "chatform" onsubmit= "return sendMessage();">
+			<input type = "text" name = "message" />
+			<input type = "submit" name = "submit" value = "Send Message"/>
+			</form>
+		</div>
+
+		<div id = "mychat"></div>
+	</body>
+</html>

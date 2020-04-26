@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<%
+
+	String user1 = "'Bob'";
+	String user2 = "'Joe'";
+
+%>
+
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,6 +74,7 @@
 			/*background-color: white;*/
 		}
 	</style>
+	<script src="chatFunctions.js"></script>
 </head>
 <body>
 	<div id="container" class="container text-left float-left">
@@ -74,12 +82,12 @@
 		<div class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
-			<a type="button" class="chatbtn btn btn-info col-2 m-3">Chat</a>
+			<a type="button" class="chatbtn btn btn-info col-2 m-3" onclick="setUserAndRecipient(<%=user1%>,<%=user2%>)">Chat</a>
 		</div>
 		<div class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
-			<a type="button" class="chatbtn btn btn-info col-2 m-3">Chat</a>
+			<a type="button" class="chatbtn btn btn-info col-2 m-3" onclick="setUserAndRecipient(<%=user2%>,<%=user1%>)">Chat</a><!-- send username and friend username to javascript funct to send to serversocket -->
 		</div>
 		<div class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
@@ -99,13 +107,17 @@
 	</div>
 	<div id="chat" class="container text-left float-left">
 		<h2 id="chat-title">Chat<i class="fas fa-plus" id="plus"></i></h2>
-		<div id="form">
-			<div id="chat-holder"></div>
-			<textarea placeholder="text messages here"></textarea>
-			<button type="button" class="btn btn-info">Send</a>
-		</div>
+		<form name="chatform" onsubmit="return sendMessage()">
+			<div id="chat-holder">
+				
+			</div>
+			<textarea id="messagebox" placeholder="text messages here"></textarea>
+			
+			<button class="btn btn-info" type = "submit" name = "submit" value = "Send Message">Send</button>
+			<!-- <input type = "submit" name = "submit" value = "Send Message"/>-->
+		</form>
 		<br>
-		<h2><a href="dashboard.html">Back to Dashboard</a></h2>
+		<h2><a href="dashboard.jsp">Back to Dashboard</a></h2>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
