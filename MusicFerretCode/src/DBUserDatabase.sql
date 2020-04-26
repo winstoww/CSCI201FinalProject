@@ -48,3 +48,36 @@ INSERT INTO Genres(profileID , genreRating )
     (1, 8),
     (1 ,3 ),
     (1,  5);
+    
+!!!!!!!!!!!!!!!!!!!!! Sean's Changes Below !!!!!!!!!!!!!!!!!!
+CREATE TABLE profile (
+    profileID INT(11) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    latitude DOUBLE(12,9 ) NOT NULL,
+	longitude VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE `ferret`.`instrument_skill` (
+  `profileID` INT(11) NOT NULL,
+  `instrumentName` VARCHAR(45) NOT NULL,
+  `skill` INT NOT NULL,
+  INDEX `profileID_idx` (`profileID` ASC) VISIBLE,
+  CONSTRAINT `profileID`
+    FOREIGN KEY (`profileID`)
+    REFERENCES `ferret`.`profile` (`profileID`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
+    
+    CREATE TABLE `ferret`.`genre_rate` (
+  `profileID` INT(11) NOT NULL,
+  `genreName` VARCHAR(45) NOT NULL,
+  `genreRating` INT NOT NULL,
+  INDEX `profileID_idx` (`profileID` ASC) VISIBLE,
+  CONSTRAINT `genre_profileID`
+    FOREIGN KEY (`profileID`)
+    REFERENCES `ferret`.`profile` (`profileID`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
+
