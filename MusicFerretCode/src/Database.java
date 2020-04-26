@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
-
 public class Database {
 	String[] allGenres = {"Pop", "Rock", "Jazz", "Country", "Folk", "Blues", "Hip Hop", "Other"};
 	
@@ -24,11 +22,7 @@ public class Database {
 		ArrayList<Integer> skill = profile.getSkill();
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -37,7 +31,7 @@ public class Database {
 		Connection connection = null;
 		Statement st = null;
 		
-		String sql = "INSERT INTO profile (profileID, name, password, email, latitude, longitude) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO profile (profileID, name, password, email, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)";
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/ferret?user=root&password=root");
 			statement = connection.prepareStatement(sql);
