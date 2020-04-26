@@ -151,5 +151,6 @@ public class MatchmakingTest {
 //		System.out.println("worse score= " + scores.get(1));
 		return;
 	}
+}
 	
 

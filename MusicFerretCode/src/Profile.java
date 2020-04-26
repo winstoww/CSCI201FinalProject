@@ -209,6 +209,9 @@ public class Profile {
 		return Double.parseDouble(df2.format(total));
 	}
 	
+	public Integer getID() {
+		return profileID;
+	}
 
 	public String getName() {
 		return name;
@@ -299,3 +302,4 @@ public class Profile {
 		output+="\n";
 		return output;
 	}
+}
