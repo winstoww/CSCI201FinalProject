@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -29,7 +30,6 @@ public class Database {
 		
 		PreparedStatement statement = null;
 		Connection connection = null;
-		Statement st = null;
 		
 		String sql = "INSERT INTO profile (profileID, name, password, email, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)";
 		try {
@@ -77,6 +77,79 @@ public class Database {
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
+	}
+	
+	public ArrayList<Profile> getAllProfiles(){
+		
+		ArrayList<Profile> profiles = new ArrayList<Profile>();
+		Integer id;
+		String name;
+		String password;
+		String email;
+		Location loc;
+		Double latitude;
+		Double longitude;
+		ArrayList<String> instruments = new ArrayList<String>();
+		ArrayList<Integer> genres = new ArrayList<Integer>();
+		ArrayList<Integer> skill = new ArrayList<Integer>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		PreparedStatement statement = null;
+		Connection connection = null;
+        ResultSet result = null;
+        
+        String sql = "SELECT * FROM profile";
+        try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/ferret?user=root&password=root");
+			statement = connection.prepareStatement(sql);
+		    result = statement.executeQuery();
+		    while(result.next()) {
+		    	id = result.getInt("profileID");
+		    	name = result.getString("name");
+		    	password = result.getString("password");
+		    	email = result.getString("email");
+		    	latitude = result.getDouble("latitude");
+		    	longitude = result.getDouble("longitude");
+		    	loc = new Location(latitude, longitude);
+		    	
+		    	
+		    	PreparedStatement instrumentStatement = null;
+		        ResultSet instrumentResult = null;
+		    	String instrument_sql = "SELECT * FROM instument_skill WHERE profileID = ?";
+		    	instrumentStatement = connection.prepareStatement(instrument_sql);
+				instrumentStatement.setString(1,  id.toString());
+				instrumentResult = instrumentStatement.executeQuery();
+				while(instrumentResult.next()) {
+					instruments.add(instrumentResult.getString("instrumentName"));
+					skill.add(Integer.parseInt(instrumentResult.getString("skill")));
+				}
+				
+				PreparedStatement genreStatement = null;
+		        ResultSet genreResult = null;
+		    	String genre_sql = "SELECT * FROM genre_rate WHERE profileID = ? AND genreName = ?";
+		    	genreStatement = connection.prepareStatement(genre_sql);
+		    	
+		    	for(String genre : allGenres) {
+		    		genreStatement.setString(1,  id.toString());
+		    		genreStatement.setString(2,  genre);
+		    		genreResult = genreStatement.executeQuery();
+		    		if(genreResult.next()) {
+		    			genres.add(Integer.parseInt(genreResult.getString("genreRating")));
+		    		}
+		    	}
+		    	Profile user = new Profile(id, name, password, email, loc, instruments, genres, skill, true);
+		    	profiles.add(user);
+		    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+ 
+		return profiles;
 	}
 }
 
