@@ -60,32 +60,27 @@
 <body>
 	<div id="container" class="container text-left float-left">
 		<h1>Potential Matches</h1>
-		<div class="users row">
+		<div id="match1" class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
 			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
 		</div>
-		<div class="users row">
+		<div id="match2" class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
 			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
 		</div>
-		<div class="users row">
+		<div id="match3" class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
 			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
 		</div>
-		<div class="users row">
+		<div id="match4" class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
 			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
 		</div>
-		<div class="users row">
-			<h2 class="col-6 float-left">Name</h2> 
-			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
-			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
-		</div>
-		<div class="users row">
+		<div id="match5" class="users row">
 			<h2 class="col-6 float-left">Name</h2> 
 			<a type="button" class="btn btn-info col-2 m-3" href="">View</a>
 			<a type="button" class="addbtn btn btn-info col-2 m-3" href="">Add</a>
@@ -96,9 +91,8 @@
 			<h2>Settings<i class="fas fa-plus" id="plus"></i></h2>
 			<br><br>
 			<ul id="form">
-				<li><h4><a href="setting.html">Change Personal Information</a><h3></li>
-				<li><h4><a href="contact.html">View Contact List</a></h4></li>
-				<li><h4><a href="login.html">Log Out</a></h4></li>
+				<li><h4><a href="contact.jsp">View Contact List</a></h4></li>
+				<li><h4><a href="login.jsp">Log Out</a></h4></li><!-- logout redirect to a servlet -->
 			</ul>
 		</div>
 	</div>
