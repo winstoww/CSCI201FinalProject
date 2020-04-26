@@ -82,16 +82,6 @@ public class Database {
 	public ArrayList<Profile> getAllProfiles(){
 		
 		ArrayList<Profile> profiles = new ArrayList<Profile>();
-		Integer id;
-		String name;
-		String password;
-		String email;
-		Location loc;
-		Double latitude;
-		Double longitude;
-		ArrayList<String> instruments = new ArrayList<String>();
-		ArrayList<Integer> genres = new ArrayList<Integer>();
-		ArrayList<Integer> skill = new ArrayList<Integer>();
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -109,6 +99,17 @@ public class Database {
 			statement = connection.prepareStatement(sql);
 		    result = statement.executeQuery();
 		    while(result.next()) {
+		    	Integer id = null;
+				String name = null;
+				String password = null;
+				String email = null;
+				Location loc = null;
+				Double latitude = null;
+				Double longitude = null;
+				ArrayList<String> instruments = new ArrayList<String>();
+				ArrayList<Integer> genres = new ArrayList<Integer>();
+				ArrayList<Integer> skill = new ArrayList<Integer>();
+				
 		    	id = result.getInt("profileID");
 		    	name = result.getString("name");
 		    	password = result.getString("password");
@@ -120,7 +121,7 @@ public class Database {
 		    	
 		    	PreparedStatement instrumentStatement = null;
 		        ResultSet instrumentResult = null;
-		    	String instrument_sql = "SELECT * FROM instument_skill WHERE profileID = ?";
+		    	String instrument_sql = "SELECT * FROM instrument_skill WHERE profileID = ?";
 		    	instrumentStatement = connection.prepareStatement(instrument_sql);
 				instrumentStatement.setString(1,  id.toString());
 				instrumentResult = instrumentStatement.executeQuery();
@@ -152,4 +153,3 @@ public class Database {
 		return profiles;
 	}
 }
-
