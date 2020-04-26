@@ -169,19 +169,8 @@
 			</div>
 		
 		
-			<div class="row">
+			<div class="row" >
 				<label for="instrument" class="col-3 m-3" >Instrument you play:</label>
-				<select class="form-control col-5 m-3" id="instrument" name="instrument" multiple> 
-					<option class="ins_select" value="unselected">----Select as many as apply---</option>
-					<option class="ins_select" value="guitar">Guitar</option>
-					<option class="ins_select" value="bass">Bass</option>
-					<option class="ins_select" value="drum">Drum</option>
-					<option class="ins_select" value="piano">Piano</option>
-					<option class="ins_select" value="violin">Violin</option>
-					<option class="ins_select" value="saxophone">Saxophone</option>
-					<option class="ins_select" value="trumpet">Trumpet</option>
-					<option class="ins_select" value="other">Other</option>
-				</select>
 			</div>
 					
 			
@@ -191,42 +180,42 @@
 			</div>
 			
 
-			<div class="row">
+			<div class="row" id="guitar">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Guitar</label>
 				<input type="range" id="range_guitar" class="skill col-5 m-3" name="range_guitar" name="vol" min="1" max="10" value=<%=guitar_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="bass">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Bass</label>
 				<input type="range" class="skill col-5 m-3" name="range_bass" name="vol" min="1" max="10" value=<%=bass_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="drum">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Drum</label>
 				<input type="range" class="skill col-5 m-3 "name="range_drum" name="vol" min="1" max="10"  value=<%=drum_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="piano">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Piano</label>
 				<input type="range" class="skill col-5 m-3" name="range_piano" name="vol" min="1" max="10"  value=<%=piano_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="violin">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Violin</label>
 				<input type="range" class="skill col-5 m-3" name="range_violin" name="vol" min="1" max="10"  value=<%=violin_skill%> />
 			</div>
 			
-			<div class="row">
+			<div class="row" id="sax">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Saxophone</label>
 				<input type="range" class="skill col-5 m-3" name="range_saxophone" name="vol" min="1" max="10"  value=<%=sax_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="trump">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Trumpet</label>
 				<input type="range" class="skill col-5 m-3" name="range_trumpet" name="vol" min="1" max="10"  value=<%=trump_skill%>/>
 			</div>
 			
-			<div class="row">
+			<div class="row" id="othersk">
 				<label for= "skill" class="skill col-3 m-3">Skill level playing Other Instruments</label>
 				<input type="range" class="skill col-5 m-3" name="range_other_instruments" name="vol" min="1" max="10"  value=<%=other_skill%>/>
 			</div>
@@ -283,38 +272,6 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjf0f_NE8y77El9cgubT9PuHcuA_HYH-E&callback=myMap"></script>
 
 	<script>
-	
-
-		$(".skill").hide();
-		$("#skill_prompt").hide();
-		$("#skill_disclaimer").hide();
-
-		let skills = document.querySelectorAll(".skill");
-		let ins_select = document.querySelectorAll(".ins_select");
-
-		$("#instrument").on("change", function() {
-			let selection;
-			for (let j=0; j<ins_select.length; j++) {
-				if (ins_select[j].value == $(this).val()) {
-					selection = j;
-				}
-			}
-			$("#skill_prompt").show();
-			$("#skill_disclaimer").show();
-			// console.log("selected: " + $(this).val());
-			for (let i=0; i<skills.length; i++) {
-				let curr = skills[i];
-				// $(curr).hide();
-				if (i==(selection*2-1)) {
-					let prev = skills[i-1];
-					// console.log("select: " + select);
-					console.log("curr: " + curr.name);
-					console.log("prev: " + prev.name);
-					$(curr).show();
-					$(prev).show();
-				}
-			}
-		});
 
 
 
